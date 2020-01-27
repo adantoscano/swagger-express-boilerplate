@@ -2,30 +2,22 @@ require('dotenv').config();
 const debug = require('debug')('app');
 const express = require('express');
 
-const app = express();
-
-const swaggerJSDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const loaders = require('./loaders');
 
 const port = process.env.PORT || 3000;
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Hello World',
-      version: '1.0.0',
-    },
-  },
-  apis: ['./routes/*.js'],
-};
+async function startServer() {
+  const app = express();
 
-const swaggerSpec = swaggerJSDoc(options);
+  await loaders.init(app);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.listen(port, err => {
+    if (err) {
+      debug(err);
+      return;
+    }
+    debug(`Example app listening on port ${port}!`);
+  });
+}
 
-require('./routes/hello')(app);
-
-app.listen(port, () => {
-  debug(`Example app listening on port ${port}!`);
-});
+startServer();
