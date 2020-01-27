@@ -1,4 +1,5 @@
 require('dotenv').config();
+const debug = require('debug')('app');
 const express = require('express');
 
 const app = express();
@@ -26,5 +27,5 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 require('./routes/hello')(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+  debug(`Example app listening on port ${port}!`);
 });
