@@ -22,4 +22,4 @@ module.exports = app => {
   app.get('/hello', (req, res) => {
     res.send(sayHelloTo(req.query.name));
   });
-}
+};

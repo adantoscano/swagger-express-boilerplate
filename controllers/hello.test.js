@@ -7,7 +7,7 @@ describe('Test Hello controller', () => {
   });
 
   test('Reply with arguments', () => {
-    const randomName = faker.name.findName()
+    const randomName = faker.name.findName();
     expect(sayHelloTo(randomName)).toBe(`Hello ${randomName}!`);
   });
-})
+});

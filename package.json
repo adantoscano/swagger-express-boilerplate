@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
   },
   "author": "",
@@ -16,6 +17,10 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^23.6.0",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
